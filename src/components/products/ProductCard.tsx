@@ -52,14 +52,14 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
 
   return (
     <article className="group flex w-40 shrink-0 flex-col gap-2.5 md:w-44">
-      <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-md bg-forest/[0.06] p-2">
+      <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-md bg-white border border-line/40 p-1.5 shadow-xs transition-shadow group-hover:border-forest/30">
         {product.imageUrl && !imageError ? (
           <img
             src={product.imageUrl}
             alt={product.name}
             loading="lazy"
             onError={() => setImageError(true)}
-            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+            className="h-full w-full object-cover rounded transition-transform duration-300 group-hover:scale-[1.03]"
           />
         ) : (
           <span className="text-3xl font-display text-forest/50">{symbol}</span>
@@ -73,22 +73,22 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
       </div>
 
       <div>
-        <p className="truncate text-sm font-medium text-ink group-hover:text-forest transition-colors">
+        <p className="truncate text-sm font-semibold text-ink group-hover:text-forest transition-colors">
           {product.name}
         </p>
-        <p className="truncate text-xs text-ink-soft">
+        <p className="truncate text-xs text-ink-soft font-medium">
           {product.brand} · {product.size}
         </p>
         {note && <p className="mt-1 text-xs text-ink-soft/80">{note}</p>}
       </div>
 
       <div className="flex items-center justify-between">
-        <span className="num text-sm font-medium text-ink">₹{product.priceInr}</span>
+        <span className="num text-sm font-semibold text-ink">₹{product.priceInr}</span>
         <button
           type="button"
           onClick={() => onAdd?.(product)}
           aria-label={`Add ${product.name} to list`}
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-cream transition-transform hover:scale-105 active:scale-95"
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-forest text-cream transition-transform hover:scale-105 active:scale-95 shadow-xs"
         >
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <path d="M12 5v14M5 12h14" />
