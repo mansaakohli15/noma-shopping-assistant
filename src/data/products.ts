@@ -50,7 +50,7 @@ export const products: Product[] = [
     tags: ['whole grain'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'apples-1kg',
@@ -101,7 +101,7 @@ export const products: Product[] = [
     tags: ['protein'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=500&auto=format&fit=crop&q=80',
     aliases: ['anda', 'ande', 'अंडा', 'अंडे'],
   },
   {
@@ -114,7 +114,7 @@ export const products: Product[] = [
     tags: ['oral care', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'sensodyne-toothpaste-100g',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     tags: ['oral care', 'sensitivity', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1559656914-a30970c1affd?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'rice-basmati-5kg',

@@ -1,6 +1,7 @@
 import type { Product, ShoppingItem } from '../types';
 import type { ParsedCommand, ParseResult } from './commandParser';
 import { findMatchingProduct, createCustomProduct } from '../lib/productMatcher';
+import { getHomeRecommendations } from './recommendationService';
 
 export interface ShoppingListActions {
   addProduct: (product: Product, quantity?: number) => void;
@@ -31,10 +32,6 @@ function pluralize(word: string): string {
   return `${word}s`;
 }
 
-// "2 apples" reads better than "2 pieces of apples" — a plain count unit
-// is dropped in favor of just pluralizing the item name. Existing list
-// items store this as "pieces" (see productUnits.ts), so both the
-// singular and plural spellings count as the generic case.
 function describeQuantity(quantity: number, unit: string | undefined, item: string): string {
   if (!unit || unit === 'piece' || unit === 'pieces' || unit === 'unit') {
     return `${quantity} ${quantity === 1 ? item : pluralize(item)}`;
@@ -43,9 +40,6 @@ function describeQuantity(quantity: number, unit: string | undefined, item: stri
   return `${quantity} ${unitLabel} of ${item}`;
 }
 
-// Same idea, but for "Updated X to ..." messages, where X is already the
-// subject of the sentence — repeating "of X" at the end would duplicate it
-// ("Updated milk to 4 bottles of milk").
 function describeUpdatedQuantity(quantity: number, unit: string | undefined, item: string): string {
   if (!unit || unit === 'piece' || unit === 'pieces' || unit === 'unit') {
     return `${quantity} ${quantity === 1 ? item : pluralize(item)}`;
@@ -59,6 +53,25 @@ function runCommand(
   items: ShoppingItem[],
   actions: ShoppingListActions,
 ): CommandExecutionResult {
+  if (command.intent === 'suggest') {
+    const recs = getHomeRecommendations(items);
+    const topRecs = [...recs.replenishment, ...recs.usuals];
+
+    if (topRecs.length > 0) {
+      const suggestedItem = topRecs[0].product;
+      actions.addProduct(suggestedItem, 1);
+      return {
+        ok: true,
+        message: `Based on your purchase rhythm, you are due for ${suggestedItem.name}. Added it to your list!`,
+      };
+    }
+
+    return {
+      ok: true,
+      message: 'Your list looks up to date! Check the Insights tab for full seasonal and restock suggestions.',
+    };
+  }
+
   const product = resolveProduct(command.item);
 
   if (command.intent === 'add') {
@@ -105,7 +118,7 @@ export function executeParsedCommands(
     }
     return {
       ok: false,
-      message: 'I heard you, but I couldn\'t figure out the shopping action. Try: "Add two bottles of milk"',
+      message: 'I heard you, but I couldn\'t figure out the shopping action. Try: "Add two bottles of milk" or "What should I buy?"',
     };
   }
 

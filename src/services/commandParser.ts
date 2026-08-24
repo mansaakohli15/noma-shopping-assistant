@@ -1,10 +1,6 @@
-// Turns a spoken transcript into structured shopping commands.
-// Deterministic and rule-based on purpose — no AI/NLP service involved.
-// Gemini comes in later for the sentences this can't handle.
-
 import { singularizeWord } from '../lib/textNormalize';
 
-export type CommandIntent = 'add' | 'remove' | 'update';
+export type CommandIntent = 'add' | 'remove' | 'update' | 'suggest';
 
 export interface ParsedCommand {
   intent: CommandIntent;
@@ -57,6 +53,17 @@ const unitWords: Record<string, string> = {
 
 const fillerWords = new Set(['a', 'an', 'the', 'some', 'of']);
 
+const suggestTriggers = [
+  'what should i buy',
+  'what should i get',
+  'what do i need',
+  'what do i need to buy',
+  'what am i likely to need',
+  'suggest items',
+  'recommend items',
+  'what to buy',
+];
+
 const addPrefixes = [
   /^i want to buy\s+/i,
   /^i want\s+/i,
@@ -77,8 +84,6 @@ function wordToNumber(word: string | undefined): number | undefined {
   return numberWords[word.toLowerCase()];
 }
 
-// Applies the shared word-level stemmer to a whole phrase — fine here since
-// our item phrases are short (1-2 words) and only the last word is plural.
 function singularize(phrase: string): string {
   return singularizeWord(phrase);
 }
@@ -147,7 +152,12 @@ export function parseCommand(rawTranscript: string): ParseResult {
   const transcript = rawTranscript.trim();
   if (!transcript) return { commands: [], understood: false, reason: 'unrecognized' };
 
-  const lower = transcript.toLowerCase();
+  const lower = transcript.toLowerCase().replace(/[?.!]/g, '').trim();
+
+  // Check for recommendation triggers ("What should I buy?")
+  if (suggestTriggers.some((trigger) => lower.includes(trigger))) {
+    return { commands: [{ intent: 'suggest', item: 'recommendation' }], understood: true };
+  }
 
   if (bareAddTriggers.has(lower) || bareRemoveTriggers.has(lower)) {
     return { commands: [], understood: false, reason: 'missing_item' };
