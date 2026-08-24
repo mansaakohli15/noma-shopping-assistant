@@ -15,6 +15,7 @@
 **NOMA** is an intelligent, voice-first shopping assistant engineered for natural speech interaction. Rather than requiring users to manually type items and organize shopping lists, NOMA listens to everyday conversational phrases (such as *"I need two bottles of milk and five apples"*) and instantly transforms speech into structured, aisle-categorized items with exact quantities and units.
 
 ---
+<img width="1917" height="1022" alt="image" src="https://github.com/user-attachments/assets/6c98d312-7de3-4386-9930-17d988275dc5" />
 
 ## 📄 Technical Approach (Assessment Write-Up)
 
@@ -28,6 +29,8 @@
 
 ---
 
+<img width="366" height="700" alt="WhatsApp Image 2026-08-24 at 10 01 20 PM - Copy" src="https://github.com/user-attachments/assets/d29c3520-8253-4ec9-8346-2846bc7f70f9" />
+
 ## ✨ Core Features
 
 ### 🎙️ 1. Multilingual Voice Input
@@ -35,20 +38,31 @@
 - Accepts natural commands in **English**, **Hindi** (*"दूध जोड़ो"*), and **Hinglish** (*"2 packet doodh add kar do"*).
 - Live updating voice command activity log with real-time relative timestamps.
 
+  <img width="366" height="700" alt="WhatsApp Image 2026-08-24 at 10 01 19 PM" src="https://github.com/user-attachments/assets/63e460d6-8814-49c8-aeba-b68162ffe716" />
+
+
 ### 💡 2. Smart Suggestions & Personalization
 - **Replenishment Predictor**: Automatically calculates household restock frequencies (e.g., Milk every 7 days) and highlights overdue items.
 - **Frequently Bought Together**: Identifies product pairings (Bread + Milk + Eggs) with 1-click bundle addition.
 - **Product Substitutions**: Recommends smart alternatives for out-of-stock or requested items (Almond Milk for Milk, Whole Wheat for White Bread).
 - **Seasonal Catalog**: Highlights fresh produce in season for the active month.
 
+<img width="1913" height="1023" alt="image" src="https://github.com/user-attachments/assets/8c0bf5c5-afad-40d6-8ade-f93abdb110b7" />
+
+
 ### 📝 3. Intelligent Shopping List
 - **Aisle Categorization**: Organizes items into store sections (Produce, Dairy, Bakery, Pantry, Personal Care, Beverages, Snacks).
 - **Quantity & Unit Controls**: Flexible voice & UI steppers (*"2 bottles"*, *"1 kg"*, *"6 pieces"*).
 - **Visual Progress Tracker**: Live progress bar and completion metrics.
 
+<img width="1917" height="990" alt="image" src="https://github.com/user-attachments/assets/e973a969-536e-4af1-9b2d-d69792c829a1" />
+
+
 ### 🛒 4. In-Supermarket Shopping Mode
 - High-contrast fullscreen view tailored for physical grocery store trips.
 - Single-item focal cards, large touch targets, and hands-free voice step-through (*"Got it"*, *"Next"*).
+
+<img width="1917" height="1025" alt="image" src="https://github.com/user-attachments/assets/cd582c56-57a6-4828-9c95-08230520c394" />
 
 ---
 
@@ -92,3 +106,5 @@ noma-shopping-assistant/
 ├── README.md              # Documentation & candidate assessment write-up
 └── package.json           # Scripts & dependencies
 ```
+
+
