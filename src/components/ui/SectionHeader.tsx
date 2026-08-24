@@ -8,10 +8,10 @@ export function SectionHeader({ eyebrow, title, action }: SectionHeaderProps) {
   return (
     <div className="flex items-end justify-between gap-4">
       <div>
-        <p className="num text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
+        <p className="num text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-soft/60">
           {eyebrow}
         </p>
-        <h2 className="mt-0.5 font-display text-xl font-semibold text-ink md:text-2xl">
+        <h2 className="mt-1 font-display text-xl font-bold text-ink md:text-2xl">
           {title}
         </h2>
       </div>
@@ -19,7 +19,7 @@ export function SectionHeader({ eyebrow, title, action }: SectionHeaderProps) {
         <button
           type="button"
           onClick={action.onClick}
-          className="shrink-0 text-xs font-medium text-forest underline decoration-forest/40 underline-offset-4 hover:decoration-forest"
+          className="shrink-0 rounded-full border border-line/70 px-3 py-1 text-xs font-medium text-ink-soft transition-all hover:border-forest/40 hover:text-forest"
         >
           {action.label}
         </button>

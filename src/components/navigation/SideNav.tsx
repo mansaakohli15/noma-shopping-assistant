@@ -9,30 +9,36 @@ export function SideNav() {
   return (
     <nav
       aria-label="Primary"
-      className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col justify-between border-r border-line/60 bg-cream-soft px-4 py-8 md:flex shadow-sm"
+      className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col justify-between border-r border-line/50 bg-cream-soft px-4 py-8 md:flex"
     >
       <div>
+        {/* Brand mark */}
         <div className="mb-8 px-2">
-          <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-forest text-cream font-bold font-display text-lg shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest text-cream font-display text-lg font-bold shadow-sm">
               N
             </span>
-            <span className="font-display text-2xl font-bold tracking-tight text-forest">NOMA</span>
+            <div>
+              <span className="block font-display text-xl font-bold tracking-tight text-ink">NOMA</span>
+              <span className="block text-[10px] font-medium text-ink-soft/70 tracking-wide">
+                Voice Shopping
+              </span>
+            </div>
           </div>
-          <p className="mt-1 text-[11px] font-medium text-ink-soft/80">Voice-First Shopping Companion</p>
         </div>
 
-        <ul className="flex flex-col gap-1.5">
+        {/* Nav items */}
+        <ul className="flex flex-col gap-1">
           {navItems.map((item) => (
             <li key={item.to}>
               <NavLink
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all ${
+                  `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 ${
                     isActive
-                      ? 'bg-forest text-cream shadow-md scale-[1.02]'
-                      : 'text-ink-soft hover:bg-cream hover:text-ink'
+                      ? 'bg-forest text-cream shadow-sm'
+                      : 'text-ink-soft hover:bg-cream-deep hover:text-ink'
                   }`
                 }
               >
@@ -41,7 +47,7 @@ export function SideNav() {
                   {item.label}
                 </div>
                 {item.to === '/list' && itemCount > 0 && (
-                  <span className="rounded-full bg-coral px-2 py-0.5 text-[11px] font-bold text-cream">
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-coral px-1.5 text-[10px] font-bold text-cream tabular-nums">
                     {itemCount}
                   </span>
                 )}
@@ -51,12 +57,13 @@ export function SideNav() {
         </ul>
       </div>
 
-      {/* Footer info badge */}
-      <div className="rounded-xl border border-line/60 bg-cream p-3 text-center">
-        <span className="text-[11px] font-bold uppercase tracking-wider text-forest">
-          🎙 Multilingual NLP
-        </span>
-        <p className="mt-0.5 text-[10px] text-ink-soft">English · Hindi · Hinglish</p>
+      {/* Language support badge */}
+      <div className="rounded-xl border border-line/50 bg-cream-deep p-3.5">
+        <div className="flex items-center gap-2 mb-0.5">
+          <span className="text-base">🎙️</span>
+          <span className="text-[11px] font-semibold text-ink">Multilingual</span>
+        </div>
+        <p className="text-[11px] text-ink-soft pl-6">English · हिंदी · Hinglish</p>
       </div>
     </nav>
   );
