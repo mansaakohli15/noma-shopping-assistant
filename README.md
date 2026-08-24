@@ -1,6 +1,18 @@
 # NOMA — Voice Command Shopping Assistant 🛒
 
-NOMA is an intelligent, voice-first shopping assistant engineered for natural speech interaction. Rather than requiring users to manually type items and organize shopping lists, NOMA listens to everyday conversational phrases (such as *"I need two bottles of milk and five apples"*) and instantly transforms speech into structured, aisle-categorized items with exact quantities and units.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-059669?style=for-the-badge&logo=vercel&logoColor=white)](https://noma-shopping-assistant.vercel.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mansaakohli15/noma-shopping-assistant)
+[![React 19](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS_v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+
+🔗 **Live Application URL**: [https://noma-shopping-assistant.vercel.app/](https://noma-shopping-assistant.vercel.app/)
+
+---
+
+## 📖 Overview
+
+**NOMA** is an intelligent, voice-first shopping assistant engineered for natural speech interaction. Rather than requiring users to manually type items and organize shopping lists, NOMA listens to everyday conversational phrases (such as *"I need two bottles of milk and five apples"*) and instantly transforms speech into structured, aisle-categorized items with exact quantities and units.
 
 ---
 
@@ -40,16 +52,22 @@ NOMA is an intelligent, voice-first shopping assistant engineered for natural sp
 
 ---
 
-## 🛠️ Installation & Setup
+## 🛠️ Installation & Local Setup
 
 ```bash
-# 1. Install project dependencies
+# 1. Clone repository
+git clone https://github.com/mansaakohli15/noma-shopping-assistant.git
+
+# 2. Navigate to project directory
+cd noma-shopping-assistant
+
+# 3. Install dependencies
 npm install
 
-# 2. Start development server
+# 4. Start local development server
 npm run dev
 
-# 3. Build for production & typecheck
+# 5. Build for production & typecheck
 npm run build
 ```
 
@@ -61,6 +79,8 @@ npm run build
 noma-shopping-assistant/
 ├── api/                   # Serverless function endpoints
 │   └── ai/interpret.js
+├── public/                # Static assets & product photography
+│   └── images/
 ├── src/
 │   ├── components/        # UI components (Voice, Shopping, Products, Navigation)
 │   ├── data/              # Product catalog, seasonal items, vocabulary maps
