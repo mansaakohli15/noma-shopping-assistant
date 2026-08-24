@@ -1,6 +1,3 @@
-// Example phrases shown to teach the user what to say. Now that the mic
-// runs real speech recognition, these are just suggestions to read and
-// speak yourself — no longer wired to a scripted result.
 const suggestions = [
   'Add two bottles of milk',
   'Remove bread',
@@ -14,7 +11,7 @@ export function TrySayingChips() {
       {suggestions.map((phrase) => (
         <li
           key={phrase}
-          className="rounded-full border border-line bg-cream-soft px-3.5 py-1.5 text-xs text-ink-soft"
+          className="rounded-full border border-slate-200/80 bg-slate-50 px-3.5 py-1.5 text-xs font-semibold text-slate-600 transition-colors hover:border-emerald-500/40 hover:text-emerald-700 shadow-2xs"
         >
           &ldquo;{phrase}&rdquo;
         </li>

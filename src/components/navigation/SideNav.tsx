@@ -9,45 +9,47 @@ export function SideNav() {
   return (
     <nav
       aria-label="Primary"
-      className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col justify-between border-r border-line/50 bg-cream-soft px-4 py-8 md:flex"
+      className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col justify-between border-r border-slate-200/80 bg-white px-5 py-7 md:flex shadow-2xs"
     >
       <div>
-        {/* Brand mark */}
-        <div className="mb-8 px-2">
-          <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-forest text-cream font-display text-lg font-bold shadow-sm">
+        {/* Brand Mark */}
+        <div className="mb-8 px-1">
+          <div className="flex items-center gap-3">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white font-display text-xl font-extrabold shadow-xs">
               N
             </span>
             <div>
-              <span className="block font-display text-xl font-bold tracking-tight text-ink">NOMA</span>
-              <span className="block text-[10px] font-medium text-ink-soft/70 tracking-wide">
-                Voice Shopping
+              <span className="block font-display text-xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                NOMA
+              </span>
+              <span className="block text-[11px] font-semibold text-emerald-700">
+                Voice Shopping Companion
               </span>
             </div>
           </div>
         </div>
 
-        {/* Nav items */}
-        <ul className="flex flex-col gap-1">
+        {/* Navigation Items */}
+        <ul className="flex flex-col gap-1.5">
           {navItems.map((item) => (
             <li key={item.to}>
               <NavLink
                 to={item.to}
                 end={item.to === '/'}
                 className={({ isActive }) =>
-                  `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 ${
+                  `flex items-center justify-between rounded-xl px-4 py-3 text-sm font-bold transition-all duration-150 ${
                     isActive
-                      ? 'bg-forest text-cream shadow-sm'
-                      : 'text-ink-soft hover:bg-cream-deep hover:text-ink'
+                      ? 'bg-emerald-50 text-emerald-800 shadow-2xs'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                   }`
                 }
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3.5">
                   {item.icon}
                   {item.label}
                 </div>
                 {item.to === '/list' && itemCount > 0 && (
-                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-coral px-1.5 text-[10px] font-bold text-cream tabular-nums">
+                  <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-emerald-600 px-1.5 text-[11px] font-extrabold text-white tabular-nums">
                     {itemCount}
                   </span>
                 )}
@@ -57,13 +59,15 @@ export function SideNav() {
         </ul>
       </div>
 
-      {/* Language support badge */}
-      <div className="rounded-xl border border-line/50 bg-cream-deep p-3.5">
-        <div className="flex items-center gap-2 mb-0.5">
-          <span className="text-base">🎙️</span>
-          <span className="text-[11px] font-semibold text-ink">Multilingual</span>
+      {/* Multilingual Support Pill */}
+      <div className="rounded-2xl border border-slate-200/80 bg-slate-50 p-4">
+        <div className="flex items-center gap-2">
+          <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-xs font-bold text-slate-900">Multilingual Voice NLP</span>
         </div>
-        <p className="text-[11px] text-ink-soft pl-6">English · हिंदी · Hinglish</p>
+        <p className="mt-1 text-[11px] font-medium text-slate-500">
+          English · हिंदी · Hinglish
+        </p>
       </div>
     </nav>
   );

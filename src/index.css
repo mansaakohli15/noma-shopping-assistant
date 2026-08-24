@@ -2,22 +2,22 @@
 
 @theme {
   /* Fresh & modern consumer grocery palette */
-  --color-cream: #faf9f5;
+  --color-cream: #f8fafc;
   --color-cream-soft: #ffffff;
-  --color-cream-deep: #f2eee3;
-  --color-forest: #1b4332;
-  --color-forest-light: #2d6a4f;
-  --color-forest-pale: #d8f3dc;
-  --color-coral: #d9483b;
-  --color-coral-light: #f87171;
+  --color-cream-deep: #f1f5f9;
+  --color-forest: #047857;
+  --color-forest-light: #059669;
+  --color-forest-pale: #ecfdf5;
+  --color-coral: #e11d48;
+  --color-coral-light: #f43f5e;
   --color-mustard: #d97706;
   --color-mustard-light: #f59e0b;
   --color-ink: #0f172a;
-  --color-ink-soft: #475569;
-  --color-line: #e2ddd2;
+  --color-ink-soft: #64748b;
+  --color-line: #e2e8f0;
 
-  /* Modern typography - Outfit for headings, Plus Jakarta Sans for UI */
-  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Modern typography - Plus Jakarta Sans */
+  --font-display: "DM Sans", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
@@ -58,17 +58,13 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-forest);
+    outline: 2px solid var(--color-forest-light);
     outline-offset: 2px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 }
 
 @layer components {
-  .divider-dashed {
-    border-top: 1px dashed var(--color-line);
-  }
-
   .num {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;

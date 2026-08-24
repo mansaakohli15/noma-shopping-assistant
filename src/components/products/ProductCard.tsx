@@ -28,13 +28,13 @@ function getCategoryFallbackSymbol(category: ProductCategory, name: string): str
 
   switch (category) {
     case 'Produce': return '🥗';
-    case 'Dairy':   return '🥛';
-    case 'Bakery':  return '🍞';
+    case 'Dairy': return '🥛';
+    case 'Bakery': return '🍞';
     case 'Beverages': return '🧃';
-    case 'Snacks':  return '🥨';
-    case 'Pantry':  return '🌾';
+    case 'Snacks': return '🥨';
+    case 'Pantry': return '🌾';
     case 'Personal Care': return '✨';
-    default:        return '🛍️';
+    default: return '🛍️';
   }
 }
 
@@ -43,16 +43,16 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
   const symbol = getCategoryFallbackSymbol(product.category, product.name);
 
   return (
-    <article className="group flex w-40 shrink-0 flex-col gap-2.5 md:w-44">
-      {/* Photo tile */}
-      <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-cream-soft border border-line/40 transition-all duration-200 group-hover:border-forest/25 group-hover:shadow-sm">
+    <article className="group flex w-44 shrink-0 flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-3 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-md md:w-48">
+      {/* Product Image Tile */}
+      <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl bg-slate-50 p-2">
         {product.imageUrl && !imageError ? (
           <img
             src={product.imageUrl}
             alt={product.name}
             loading="lazy"
             onError={() => setImageError(true)}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
+            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
           <span className="text-3xl">{symbol}</span>
@@ -63,45 +63,38 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
             <Tag tone={tag.tone}>{tag.label}</Tag>
           </div>
         )}
-
-        {/* Quick-add overlay on hover */}
-        <button
-          type="button"
-          onClick={() => onAdd?.(product)}
-          aria-label={`Add ${product.name} to list`}
-          className="absolute bottom-2 right-2 flex h-7 w-7 items-center justify-center rounded-full bg-forest/90 text-cream opacity-0 shadow-md transition-all duration-200 group-hover:opacity-100 hover:scale-105 active:scale-95"
-        >
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M12 5v14M5 12h14" />
-          </svg>
-        </button>
       </div>
 
-      {/* Info */}
-      <div>
-        <p className="truncate text-sm font-semibold text-ink leading-snug group-hover:text-forest transition-colors">
-          {product.name}
-        </p>
-        <p className="truncate text-xs text-ink-soft mt-0.5">
-          {product.brand} · {product.size}
-        </p>
-        {note && <p className="mt-1 text-xs text-ink-soft/70 line-clamp-1">{note}</p>}
-      </div>
+      {/* Details */}
+      <div className="mt-3 flex flex-1 flex-col justify-between">
+        <div>
+          <p className="truncate text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+            {product.name}
+          </p>
+          <p className="truncate text-xs font-medium text-slate-500 mt-0.5">
+            {product.brand} · {product.size}
+          </p>
+          {note && (
+            <p className="mt-1 line-clamp-1 text-[11px] font-semibold text-emerald-700">
+              {note}
+            </p>
+          )}
+        </div>
 
-      {/* Price + add */}
-      <div className="flex items-center justify-between">
-        <span className="num text-sm font-semibold text-ink">₹{product.priceInr}</span>
-        <button
-          type="button"
-          onClick={() => onAdd?.(product)}
-          aria-label={`Add ${product.name} to list`}
-          className="flex items-center gap-1.5 rounded-full border border-forest/30 px-3 py-1 text-xs font-semibold text-forest transition-all hover:bg-forest hover:text-cream hover:border-forest active:scale-95"
-        >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M12 5v14M5 12h14" />
-          </svg>
-          Add
-        </button>
+        {/* Price & Add button */}
+        <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
+          <span className="num text-base font-extrabold text-slate-900">₹{product.priceInr}</span>
+          <button
+            type="button"
+            onClick={() => onAdd?.(product)}
+            aria-label={`Add ${product.name} to list`}
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs transition-all duration-150 hover:bg-emerald-700 hover:scale-105 active:scale-95"
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M12 5v14M5 12h14" />
+            </svg>
+          </button>
+        </div>
       </div>
     </article>
   );
