@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color tokens */
+  --color-cream: #f5efe1;
+  --color-cream-soft: #faf7ef;
+  --color-forest: #1f3d2b;
+  --color-forest-light: #2d543e;
+  --color-coral: #c1613d;
+  --color-coral-light: #d9835e;
+  --color-mustard: #c99a2e;
+  --color-mustard-light: #e0b555;
+  --color-ink: #1b1a17;
+  --color-ink-soft: #4a463d;
+  --color-line: #ded4bd;
+
+  /* Type tokens */
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --animate-wave: wave 0.9s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Restrained receipt-inspired divider — used sparingly, not everywhere */
+  .divider-dashed {
+    border-top: 1px dashed var(--color-line);
+  }
+
+  /* Subtle perforated edge, for a card that wants a receipt echo */
+  .edge-perforated {
+    background-image: radial-gradient(circle, var(--color-cream) 3px, transparent 3.5px);
+    background-size: 12px 12px;
+    background-position: top center;
+    background-repeat: repeat-x;
+    height: 6px;
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
