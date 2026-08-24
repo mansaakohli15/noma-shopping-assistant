@@ -1,6 +1,6 @@
 import type { Product } from '../types';
 
-// Product catalog for NOMA with accurate product photography.
+// Product catalog for NOMA with verified product photography.
 
 export const products: Product[] = [
   {
@@ -75,7 +75,7 @@ export const products: Product[] = [
     tags: ['fresh', 'organic'],
     organic: true,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1619546813926-a78fa6372ce2?w=500&auto=format&fit=crop&q=80',
+    imageUrl: '/images/organic-apples.png',
     aliases: ['seb', 'सेब'],
   },
   {
@@ -114,7 +114,7 @@ export const products: Product[] = [
     tags: ['oral care', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Colgate_toothpaste.jpg/800px-Colgate_toothpaste.jpg',
+    imageUrl: '/images/colgate.png',
   },
   {
     id: 'sensodyne-toothpaste-100g',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     tags: ['oral care', 'sensitivity', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Sensodyne_toothpaste_tube.jpg/800px-Sensodyne_toothpaste_tube.jpg',
+    imageUrl: '/images/sensodyne.png',
   },
   {
     id: 'rice-basmati-5kg',

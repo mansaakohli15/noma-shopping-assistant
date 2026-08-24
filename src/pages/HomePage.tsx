@@ -13,16 +13,6 @@ import type { Product, Recommendation } from '../types';
 import { getHomeRecommendations } from '../services/recommendationService';
 import { useVoiceActivity } from '../lib/voiceActivityStore';
 
-const categoryShortcuts = [
-  { label: 'All Aisles', icon: '🛒' },
-  { label: 'Produce', icon: '🥗' },
-  { label: 'Dairy', icon: '🥛' },
-  { label: 'Bakery', icon: '🍞' },
-  { label: 'Personal Care', icon: '🪥' },
-  { label: 'Pantry', icon: '🌾' },
-  { label: 'Beverages', icon: '🧃' },
-];
-
 export function HomePage() {
   const { items, addProduct } = useShoppingList();
   const { message, show } = useToast();
@@ -42,63 +32,32 @@ export function HomePage() {
   };
 
   return (
-    <div className="pb-16 px-4 md:px-8 pt-6">
-      {/* Behance-Inspired Hero Voice Assistant Banner */}
-      <section className="mx-auto max-w-4xl rounded-3xl border border-emerald-100/80 bg-white p-6 shadow-sm md:p-10 text-center relative overflow-hidden">
-        <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-emerald-50/60 pointer-events-none" />
-        <div className="absolute -bottom-12 -left-12 h-40 w-40 rounded-full bg-amber-50/60 pointer-events-none" />
+    <div className="pb-10">
+      {/* Voice hero section — Warm, editorial & color-coordinated */}
+      <section className="border-b border-line px-5 pb-8 pt-8 text-center md:px-10 md:pt-12">
+        <p className="num text-xs uppercase tracking-[0.18em] text-coral font-medium">Good morning</p>
+        <h1 className="mt-2 font-display text-3xl font-semibold text-ink md:text-4xl">
+          What do you need today?
+        </h1>
+        <p className="mx-auto mt-2 max-w-xs text-sm text-ink-soft">
+          Speak naturally in English, Hindi or Hinglish. I&apos;ll keep track of the rest.
+        </p>
 
-        <div className="relative z-10">
-          <span className="num inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200/60 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-emerald-800">
-            <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-            NOMA Voice Shopping Assistant
-          </span>
+        <MicControl />
 
-          <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-slate-800 md:text-5xl">
-            What do you need today?
-          </h1>
-          <p className="mx-auto mt-2 max-w-md text-sm font-medium text-slate-500">
-            Speak naturally in English, Hindi, or Hinglish. I&apos;ll organize your shopping list.
+        <div className="mx-auto mt-2 max-w-md">
+          <p className="num mb-2 text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
+            Try saying
           </p>
-
-          <div className="my-2">
-            <MicControl />
+          <div className="flex justify-center">
+            <TrySayingChips />
           </div>
-
-          <div className="mx-auto max-w-md border-t border-slate-100 pt-4">
-            <p className="num mb-2.5 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-              Try saying
-            </p>
-            <div className="flex justify-center">
-              <TrySayingChips />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Category Shortcut Pills */}
-      <section className="mx-auto max-w-4xl pt-8">
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          {categoryShortcuts.map((cat, idx) => (
-            <button
-              key={cat.label}
-              type="button"
-              className={`flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs font-bold transition-all shadow-sm ${
-                idx === 0
-                  ? 'bg-emerald-700 text-white shadow-emerald-700/20'
-                  : 'bg-white border border-slate-200 text-slate-700 hover:border-emerald-300 hover:bg-emerald-50/50'
-              }`}
-            >
-              <span>{cat.icon}</span>
-              <span>{cat.label}</span>
-            </button>
-          ))}
         </div>
       </section>
 
       {/* Your usuals */}
       {recommendations.usuals.length > 0 && (
-        <section className="mx-auto max-w-4xl pt-8">
+        <section className="px-5 pt-8 md:px-10">
           <SectionHeader eyebrow="You buy these often" title="Your usuals" />
           <div className="mt-4">
             <ProductRail>
@@ -118,9 +77,9 @@ export function HomePage() {
 
       {/* You may need this */}
       {recommendations.replenishment.length > 0 && (
-        <section className="mx-auto max-w-4xl pt-8">
-          <SectionHeader eyebrow="Based on your restock rhythm" title="You may need this" />
-          <div className="mt-4 flex flex-col gap-3">
+        <section className="px-5 pt-8 md:px-10">
+          <SectionHeader eyebrow="Based on your shopping rhythm" title="You may need this" />
+          <div className="mt-4 flex flex-col gap-2.5">
             {recommendations.replenishment.map((rec) => (
               <ReplenishmentCard
                 key={rec.id}
@@ -134,7 +93,7 @@ export function HomePage() {
 
       {/* Seasonal now */}
       {recommendations.seasonal.length > 0 && (
-        <section className="mx-auto max-w-4xl pt-8">
+        <section className="px-5 pt-8 md:px-10">
           <SectionHeader eyebrow="Good picks this month" title="Seasonal now" />
           <div className="mt-4">
             <ProductRail>
@@ -152,9 +111,9 @@ export function HomePage() {
       )}
 
       {/* Live Recent activity */}
-      <section className="mx-auto max-w-4xl pt-8">
-        <SectionHeader eyebrow="Live activity log" title="Recent activity" />
-        <div className="mt-3">
+      <section className="px-5 pt-8 md:px-10">
+        <SectionHeader eyebrow="Voice history" title="Recent activity" />
+        <div className="mt-2">
           <RecentActivityList activity={voiceActivity} />
         </div>
       </section>
