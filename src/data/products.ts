@@ -1,6 +1,6 @@
 import type { Product } from '../types';
 
-// Local catalog for NOMA with realistic Indian grocery items & Unsplash product images.
+// Product catalog for NOMA with full details and product photography.
 
 export const products: Product[] = [
   {
@@ -13,7 +13,7 @@ export const products: Product[] = [
     tags: ['dairy'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80',
     aliases: ['doodh', 'दूध'],
   },
   {
@@ -26,7 +26,7 @@ export const products: Product[] = [
     tags: ['plant-based', 'dairy-free'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'brown-bread-400g',
@@ -38,7 +38,7 @@ export const products: Product[] = [
     tags: ['whole grain'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'whole-wheat-bread-400g',
@@ -50,7 +50,7 @@ export const products: Product[] = [
     tags: ['whole grain'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'apples-1kg',
@@ -62,7 +62,7 @@ export const products: Product[] = [
     tags: ['fresh'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=80',
     aliases: ['seb', 'सेब'],
   },
   {
@@ -75,7 +75,7 @@ export const products: Product[] = [
     tags: ['fresh', 'organic'],
     organic: true,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1619546813926-a78fa6372ce2?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=500&auto=format&fit=crop&q=80',
     aliases: ['seb', 'सेब'],
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     tags: ['fresh'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80',
     aliases: ['kela', 'kele', 'केला', 'केले'],
   },
   {
@@ -101,7 +101,7 @@ export const products: Product[] = [
     tags: ['protein'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=80',
     aliases: ['anda', 'ande', 'अंडा', 'अंडे'],
   },
   {
@@ -114,7 +114,7 @@ export const products: Product[] = [
     tags: ['oral care', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'sensodyne-toothpaste-100g',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     tags: ['oral care', 'sensitivity', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'rice-basmati-5kg',
@@ -138,7 +138,7 @@ export const products: Product[] = [
     tags: ['staple'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'oats-1kg',
@@ -150,7 +150,7 @@ export const products: Product[] = [
     tags: ['breakfast'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1517673400267-0251440c45dc?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1517673400267-0251440c45dc?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'coconut-water-1l',
@@ -162,7 +162,7 @@ export const products: Product[] = [
     tags: ['seasonal'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'mangoes-1kg',
@@ -174,7 +174,7 @@ export const products: Product[] = [
     tags: ['seasonal', 'fresh'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1553279768-865429fa0078?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'watermelon-1pc',
@@ -186,7 +186,7 @@ export const products: Product[] = [
     tags: ['seasonal', 'fresh'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=500&auto=format&fit=crop&q=80',
   },
 ];
 

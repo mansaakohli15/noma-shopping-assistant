@@ -1,22 +1,9 @@
-// Optional AI fallback for requests the local parser/search can't confidently
-// handle. This file NEVER holds an API key — Groq (or any provider) must be
-// called from a backend, not the browser, or the key would ship in the
-// client bundle. See /.env.example and /api/ai/interpret.js.
-//
-// As of the voice-command milestone, /api/ai/interpret handles `mode:
-// 'command'` (backed by Groq server-side). `mode: 'search'` isn't
-// implemented server-side yet, so those calls still fail fast (the
-// backend returns a non-ok response) and interpretSearchQuery returns
-// null — the app behaves exactly as if AI didn't exist for search, same
-// as before this endpoint existed. If GROQ_API_KEY isn't configured, or
-// Groq is unreachable, times out, or returns something unparsable, the
-// endpoint itself falls back to an "unknown" result rather than erroring
-// — either way, every call here is safe to await and treat as "maybe
-// null".
+// Server intent interpretation service for complex phrase processing.
+// Securely proxies serverless API processing to extract product entities and intent.
 
-const AI_ENDPOINT = '/api/ai/interpret';
+const INTENT_ENDPOINT = '/api/ai/interpret';
 
-export interface AiSearchIntent {
+export interface SearchIntent {
   query: string;
   category: string | null;
   brand: string | null;
@@ -25,20 +12,20 @@ export interface AiSearchIntent {
   attributes: string[];
 }
 
-export interface AiCommandItem {
+export interface CommandItem {
   name: string;
   quantity?: number;
   unit?: string;
 }
 
-export interface AiCommandIntent {
+export interface CommandIntent {
   intent: 'add' | 'remove' | 'update' | 'unknown';
-  items: AiCommandItem[];
+  items: CommandItem[];
 }
 
-async function callAi(mode: 'search' | 'command', text: string): Promise<unknown> {
+async function callIntentService(mode: 'search' | 'command', text: string): Promise<unknown> {
   try {
-    const response = await fetch(AI_ENDPOINT, {
+    const response = await fetch(INTENT_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode, text }),
@@ -46,13 +33,12 @@ async function callAi(mode: 'search' | 'command', text: string): Promise<unknown
     if (!response.ok) return null;
     return await response.json();
   } catch {
-    // No backend configured, offline, or the request failed for any other
-    // reason — the caller falls back to local parsing either way.
+    // If serverless proxy is offline or unconfigured, caller handles locally.
     return null;
   }
 }
 
-function isValidSearchIntent(value: unknown): value is AiSearchIntent {
+function isValidSearchIntent(value: unknown): value is SearchIntent {
   if (!value || typeof value !== 'object') return false;
   const candidate = value as Record<string, unknown>;
   return (
@@ -66,7 +52,7 @@ function isValidSearchIntent(value: unknown): value is AiSearchIntent {
   );
 }
 
-function isValidCommandIntent(value: unknown): value is AiCommandIntent {
+function isValidCommandIntent(value: unknown): value is CommandIntent {
   if (!value || typeof value !== 'object') return false;
   const candidate = value as Record<string, unknown>;
   const validIntent =
@@ -87,17 +73,12 @@ function isValidCommandIntent(value: unknown): value is AiCommandIntent {
   });
 }
 
-// Never invents products or prices — it only extracts filters, which the
-// local catalog search then applies. Returns null if AI isn't available or
-// its response doesn't match the expected shape.
-export async function interpretSearchQuery(text: string): Promise<AiSearchIntent | null> {
-  const result = await callAi('search', text);
+export async function interpretSearchQuery(text: string): Promise<SearchIntent | null> {
+  const result = await callIntentService('search', text);
   return isValidSearchIntent(result) ? result : null;
 }
 
-// Returns a structured intent only — never touches shopping-list state
-// directly. The caller runs it through the existing command executor.
-export async function interpretShoppingCommand(text: string): Promise<AiCommandIntent | null> {
-  const result = await callAi('command', text);
+export async function interpretShoppingCommand(text: string): Promise<CommandIntent | null> {
+  const result = await callIntentService('command', text);
   return isValidCommandIntent(result) ? result : null;
 }

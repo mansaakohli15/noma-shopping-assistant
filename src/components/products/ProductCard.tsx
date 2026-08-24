@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { Product } from '../../types';
+import type { Product, ProductCategory } from '../../types';
 import { Tag } from '../ui/Tag';
 
 interface ProductCardProps {
@@ -9,23 +9,66 @@ interface ProductCardProps {
   onAdd?: (product: Product) => void;
 }
 
+function getCategoryFallbackSymbol(category: ProductCategory, name: string): string {
+  const lower = name.toLowerCase();
+  if (lower.includes('apple')) return '🍎';
+  if (lower.includes('banana')) return '🍌';
+  if (lower.includes('mango')) return '🥭';
+  if (lower.includes('watermelon')) return '🍉';
+  if (lower.includes('milk')) return '🥛';
+  if (lower.includes('bread')) return '🍞';
+  if (lower.includes('egg')) return '🥚';
+  if (lower.includes('rice')) return '🍚';
+  if (lower.includes('oat')) return '🥣';
+  if (lower.includes('coconut')) return '🥥';
+  if (lower.includes('toothpaste')) return '🪥';
+
+  switch (category) {
+    case 'Produce':
+      return '🥗';
+    case 'Dairy':
+      return '🥛';
+    case 'Bakery':
+      return '🍞';
+    case 'Beverages':
+      return '🧃';
+    case 'Snacks':
+      return '🥨';
+    case 'Pantry':
+      return '🌾';
+    case 'Personal Care':
+      return '✨';
+    default:
+      return '🛍️';
+  }
+}
+
 export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
-  const initial = product.name.charAt(0);
+  const symbol = getCategoryFallbackSymbol(product.category, product.name);
 
   return (
-    <article className="group flex w-40 shrink-0 flex-col justify-between gap-2.5 rounded-xl border border-line/60 bg-cream-soft p-2.5 shadow-sm transition-all hover:border-forest/30 hover:shadow-md md:w-44">
-      <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg bg-forest/[0.04]">
+    <article className="group flex w-40 shrink-0 flex-col justify-between gap-2.5 rounded-xl border border-line/60 bg-cream-soft p-2.5 shadow-sm transition-all hover:border-forest/40 hover:shadow-md md:w-44">
+      <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg bg-forest/[0.05]">
         {product.imageUrl && !imageError ? (
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            loading="lazy"
-            onError={() => setImageError(true)}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-          />
+          <>
+            {!imageLoaded && (
+              <span className="absolute text-2xl opacity-60 animate-pulse">{symbol}</span>
+            )}
+            <img
+              src={product.imageUrl}
+              alt={product.name}
+              loading="lazy"
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+              className={`h-full w-full object-cover transition-all duration-300 group-hover:scale-105 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          </>
         ) : (
-          <span className="font-display text-3xl font-bold text-forest/40">{initial}</span>
+          <span className="text-3xl">{symbol}</span>
         )}
 
         {tag && (
@@ -43,7 +86,7 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
           <p className="truncate text-xs text-ink-soft">
             {product.brand} · {product.size}
           </p>
-          {note && <p className="mt-1 line-clamp-1 text-[11px] text-ink-soft/80">{note}</p>}
+          {note && <p className="mt-1 line-clamp-1 text-[11px] font-medium text-forest">{note}</p>}
         </div>
 
         <div className="mt-3 flex items-center justify-between border-t border-line/40 pt-2">
