@@ -1,28 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  /* Color tokens */
-  --color-cream: #f7f2e8;
-  --color-cream-soft: #fdfaf4;
-  --color-cream-deep: #ede8dc;
-  --color-forest: #1f3d2b;
-  --color-forest-light: #2d543e;
-  --color-forest-pale: #ecf0eb;
-  --color-coral: #c1613d;
-  --color-coral-light: #d9835e;
-  --color-mustard: #c99a2e;
-  --color-mustard-light: #e0b555;
-  --color-ink: #1b1a17;
-  --color-ink-soft: #5a5650;
-  --color-line: #e0d8c8;
+  /* Fresh & modern consumer grocery palette */
+  --color-cream: #faf9f5;
+  --color-cream-soft: #ffffff;
+  --color-cream-deep: #f2eee3;
+  --color-forest: #1b4332;
+  --color-forest-light: #2d6a4f;
+  --color-forest-pale: #d8f3dc;
+  --color-coral: #d9483b;
+  --color-coral-light: #f87171;
+  --color-mustard: #d97706;
+  --color-mustard-light: #f59e0b;
+  --color-ink: #0f172a;
+  --color-ink-soft: #475569;
+  --color-line: #e2ddd2;
 
-  /* Type tokens — swapped to Inter + Playfair for a premium, human feel */
-  --font-display: "Playfair Display", ui-serif, Georgia, serif;
-  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  /* Modern typography - Outfit for headings, Plus Jakarta Sans for UI */
+  --font-display: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   --animate-wave: wave 0.9s ease-in-out infinite;
-  --animate-fade-up: fadeUp 0.4s ease-out both;
 }
 
 @keyframes wave {
@@ -32,17 +31,6 @@
   }
   50% {
     transform: scaleY(1);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -58,7 +46,6 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "kern" 1, "liga" 1;
   }
 
   h1,
@@ -66,13 +53,14 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
   :focus-visible {
     outline: 2px solid var(--color-forest);
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 }
 
@@ -81,36 +69,8 @@
     border-top: 1px dashed var(--color-line);
   }
 
-  .edge-perforated {
-    background-image: radial-gradient(circle, var(--color-cream) 3px, transparent 3.5px);
-    background-size: 12px 12px;
-    background-position: top center;
-    background-repeat: repeat-x;
-    height: 6px;
-  }
-
   .num {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
-  }
-
-  /* Glass card effect */
-  .card-glass {
-    background: rgba(253, 250, 244, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(224, 216, 200, 0.7);
-  }
-
-  /* Pill tag */
-  .tag-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    border-radius: 100px;
-    padding: 3px 10px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
   }
 }
