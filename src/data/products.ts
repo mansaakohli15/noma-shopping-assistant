@@ -1,6 +1,6 @@
 import type { Product } from '../types';
 
-// Product catalog for NOMA with full details and product photography.
+// Product catalog for NOMA with full details and verified product photography.
 
 export const products: Product[] = [
   {
@@ -50,7 +50,7 @@ export const products: Product[] = [
     tags: ['whole grain'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1589367920969-ab8e050bbb04?w=500&auto=format&fit=crop&q=80',
   },
   {
     id: 'apples-1kg',
@@ -75,7 +75,7 @@ export const products: Product[] = [
     tags: ['fresh', 'organic'],
     organic: true,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1619546813926-a78fa6372ce2?w=500&auto=format&fit=crop&q=80',
     aliases: ['seb', 'सेब'],
   },
   {
@@ -101,7 +101,7 @@ export const products: Product[] = [
     tags: ['protein'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=500&auto=format&fit=crop&q=80',
     aliases: ['anda', 'ande', 'अंडा', 'अंडे'],
   },
   {

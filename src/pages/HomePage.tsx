@@ -32,37 +32,38 @@ export function HomePage() {
   };
 
   return (
-    <div className="pb-12">
-      {/* Hero Header with fresh gradient accent */}
-      <section className="relative overflow-hidden border-b border-line/60 bg-gradient-to-b from-cream-soft/80 via-cream to-cream px-5 pb-10 pt-10 text-center md:px-10 md:pt-14">
-        <div className="mx-auto max-w-xl">
-          <span className="num inline-flex items-center gap-1.5 rounded-full bg-coral/10 px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-coral">
-            <span className="h-1.5 w-1.5 rounded-full bg-coral animate-pulse" />
-            NOMA Voice Companion
-          </span>
-          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-ink md:text-5xl">
-            What do you need today?
-          </h1>
-          <p className="mx-auto mt-2 max-w-sm text-sm font-medium text-ink-soft">
-            Speak naturally in English, Hindi or Hinglish. I&apos;ll keep track of the rest.
-          </p>
+    <div className="pb-16 px-4 md:px-8 pt-6">
+      {/* Hero Voice Container - Structured, Warm & Elevated */}
+      <section className="mx-auto max-w-4xl rounded-3xl border border-stone-200/80 bg-white p-6 shadow-sm md:p-10 text-center">
+        <span className="num inline-flex items-center gap-1.5 rounded-full bg-forest/10 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-forest">
+          <span className="h-2 w-2 rounded-full bg-forest animate-pulse" />
+          Voice Shopping Assistant
+        </span>
 
+        <h1 className="mt-4 font-display text-4xl font-extrabold tracking-tight text-ink md:text-5xl">
+          What do you need today?
+        </h1>
+        <p className="mx-auto mt-2 max-w-md text-sm font-medium text-ink-soft">
+          Speak naturally in English, Hindi, or Hinglish. I&apos;ll organize the rest.
+        </p>
+
+        <div className="my-2">
           <MicControl />
+        </div>
 
-          <div className="mx-auto mt-2 max-w-md">
-            <p className="num mb-2 text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
-              Try saying
-            </p>
-            <div className="flex justify-center">
-              <TrySayingChips />
-            </div>
+        <div className="mx-auto max-w-md border-t border-stone-100 pt-4">
+          <p className="num mb-2 text-[11px] font-bold uppercase tracking-widest text-ink-soft/70">
+            Try saying
+          </p>
+          <div className="flex justify-center">
+            <TrySayingChips />
           </div>
         </div>
       </section>
 
       {/* Your usuals */}
       {recommendations.usuals.length > 0 && (
-        <section className="px-5 pt-8 md:px-10">
+        <section className="mx-auto max-w-4xl pt-10">
           <SectionHeader eyebrow="You buy these often" title="Your usuals" />
           <div className="mt-4">
             <ProductRail>
@@ -82,8 +83,8 @@ export function HomePage() {
 
       {/* You may need this */}
       {recommendations.replenishment.length > 0 && (
-        <section className="px-5 pt-8 md:px-10">
-          <SectionHeader eyebrow="Based on your shopping rhythm" title="You may need this" />
+        <section className="mx-auto max-w-4xl pt-10">
+          <SectionHeader eyebrow="Based on your restock rhythm" title="You may need this" />
           <div className="mt-4 flex flex-col gap-3">
             {recommendations.replenishment.map((rec) => (
               <ReplenishmentCard
@@ -98,7 +99,7 @@ export function HomePage() {
 
       {/* Seasonal now */}
       {recommendations.seasonal.length > 0 && (
-        <section className="px-5 pt-8 md:px-10">
+        <section className="mx-auto max-w-4xl pt-10">
           <SectionHeader eyebrow="Good picks this month" title="Seasonal now" />
           <div className="mt-4">
             <ProductRail>
@@ -116,8 +117,8 @@ export function HomePage() {
       )}
 
       {/* Live Recent activity */}
-      <section className="px-5 pt-8 md:px-10">
-        <SectionHeader eyebrow="Live Voice log" title="Recent activity" />
+      <section className="mx-auto max-w-4xl pt-10">
+        <SectionHeader eyebrow="Live activity log" title="Recent activity" />
         <div className="mt-3">
           <RecentActivityList activity={voiceActivity} />
         </div>
