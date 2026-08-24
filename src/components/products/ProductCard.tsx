@@ -43,9 +43,9 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
   const symbol = getCategoryFallbackSymbol(product.category, product.name);
 
   return (
-    <article className="group flex w-44 shrink-0 flex-col justify-between rounded-2xl border border-slate-200/80 bg-white p-3 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-emerald-500/40 hover:shadow-md md:w-48">
+    <article className="group flex w-44 shrink-0 flex-col justify-between rounded-2xl border border-line bg-cream-soft p-3 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-forest/40 hover:shadow-md md:w-48">
       {/* Product Image Tile */}
-      <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl bg-slate-50 p-2">
+      <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-xl bg-forest-pale/40 p-2 border border-line/40">
         {product.imageUrl && !imageError ? (
           <img
             src={product.imageUrl}
@@ -68,27 +68,27 @@ export function ProductCard({ product, tag, note, onAdd }: ProductCardProps) {
       {/* Details */}
       <div className="mt-3 flex flex-1 flex-col justify-between">
         <div>
-          <p className="truncate text-sm font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+          <p className="truncate text-sm font-bold text-ink group-hover:text-forest transition-colors">
             {product.name}
           </p>
-          <p className="truncate text-xs font-medium text-slate-500 mt-0.5">
+          <p className="truncate text-xs font-medium text-ink-soft mt-0.5">
             {product.brand} · {product.size}
           </p>
           {note && (
-            <p className="mt-1 line-clamp-1 text-[11px] font-semibold text-emerald-700">
+            <p className="mt-1 line-clamp-1 text-[11px] font-semibold text-forest">
               {note}
             </p>
           )}
         </div>
 
         {/* Price & Add button */}
-        <div className="mt-3 flex items-center justify-between border-t border-slate-100 pt-2.5">
-          <span className="num text-base font-extrabold text-slate-900">₹{product.priceInr}</span>
+        <div className="mt-3 flex items-center justify-between border-t border-line/50 pt-2.5">
+          <span className="num text-base font-extrabold text-ink">₹{product.priceInr}</span>
           <button
             type="button"
             onClick={() => onAdd?.(product)}
             aria-label={`Add ${product.name} to list`}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xs transition-all duration-150 hover:bg-emerald-700 hover:scale-105 active:scale-95"
+            className="flex h-8 w-8 items-center justify-center rounded-full bg-forest text-cream shadow-xs transition-all duration-150 hover:bg-forest-light hover:scale-105 active:scale-95"
           >
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M12 5v14M5 12h14" />

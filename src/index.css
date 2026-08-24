@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Fresh & modern consumer grocery palette */
-  --color-cream: #f8fafc;
+  /* Warm Sage Green + Terracotta Orange Palette */
+  --color-cream: #faf6ee;
   --color-cream-soft: #ffffff;
-  --color-cream-deep: #f1f5f9;
-  --color-forest: #047857;
-  --color-forest-light: #059669;
-  --color-forest-pale: #ecfdf5;
-  --color-coral: #e11d48;
-  --color-coral-light: #f43f5e;
-  --color-mustard: #d97706;
-  --color-mustard-light: #f59e0b;
-  --color-ink: #0f172a;
-  --color-ink-soft: #64748b;
-  --color-line: #e2e8f0;
+  --color-cream-deep: #f2ebd9;
+  --color-forest: #224229;
+  --color-forest-light: #386641;
+  --color-forest-pale: #e8f0e9;
+  --color-coral: #e06d43;
+  --color-coral-light: #f48c68;
+  --color-mustard: #d49a3d;
+  --color-mustard-light: #eec170;
+  --color-ink: #1b1c19;
+  --color-ink-soft: #545b52;
+  --color-line: #e6dfd1;
 
-  /* Modern typography - Plus Jakarta Sans */
+  /* Modern typography - DM Sans & Plus Jakarta Sans */
   --font-display: "DM Sans", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
