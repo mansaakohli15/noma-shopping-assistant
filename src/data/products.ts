@@ -114,7 +114,7 @@ export const products: Product[] = [
     tags: ['oral care', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Colgate_toothpaste.jpg/800px-Colgate_toothpaste.jpg',
   },
   {
     id: 'sensodyne-toothpaste-100g',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     tags: ['oral care', 'sensitivity', 'toothpaste'],
     organic: false,
     inStock: true,
-    imageUrl: 'https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=500&auto=format&fit=crop&q=80',
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Sensodyne_toothpaste_tube.jpg/800px-Sensodyne_toothpaste_tube.jpg',
   },
   {
     id: 'rice-basmati-5kg',
